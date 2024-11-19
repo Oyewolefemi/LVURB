@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Store</title>
+  <link href="style.css" rel="stylesheet">
+  <style>
+    .hero-image {
+      transition: opacity 1s ease-in-out;
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-900">
+  <!-- Header -->
+  <header class="bg-white shadow-md sticky top-0 z-10">
+    <nav class="flex items-center justify-between px-6 py-4">
+      <div class="text-2xl font-bold text-gray-800">Business Store</div>
+      <ul class="flex space-x-6">
+        <li><a href="#home" class="text-gray-600 hover:text-gray-900">Home</a></li>
+        <li><a href="#fashion" class="text-gray-600 hover:text-gray-900">Fashion</a></li>
+        <li><a href="#beauty" class="text-gray-600 hover:text-gray-900">Beauty</a></li>
+        <li><a href="#tech" class="text-gray-600 hover:text-gray-900">Tech</a></li>
+        <li><a href="#contact" class="text-gray-600 hover:text-gray-900">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section with Image Transitions -->
+  <section class="relative h-screen flex items-center justify-center bg-gray-900 text-white" id="home">
+    <!-- Overlay Images for Transition Effect -->
+    <div class="absolute inset-0 flex justify-center items-center overflow-hidden">
+      <img src="https://images.unsplash.com/photo-1511742022240-d1c9d5f2e1b5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3M3wwfDF8c2VhcmNofDF8fGZhc2hpb258ZW58MHx8fHwxNjE3MTA4NzI0&ixlib=rb-1.2.1&q=80&w=1080" alt="Fashion Image 1" class="hero-image absolute opacity-100 w-full h-full object-cover">
+      <img src="https://images.unsplash.com/photo-1521747116042-5a810fda9664?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3M3wwfDF8c2VhcmNofDIyfHx0cmFuc3BvcnR8ZW58MHx8fHwxNjE3MTA4NzI0&ixlib=rb-1.2.1&q=80&w=1080" alt="Fashion Image 2" class="hero-image absolute opacity-0 w-full h-full object-cover">
+      <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3M3wwfDF8c2VhcmNofDEzfHxzdHJlZXQlMjBzdHlsZXxlbnwwfHx8fDE2MTcxMDg3MjQ&ixlib=rb-1.2.1&q=80&w=1080" alt="Fashion Image 3" class="hero-image absolute opacity-0 w-full h-full object-cover">
+    </div>
+
+    <!-- Hero Content -->
+    <div class="relative z-10 text-center px-4">
+      <h1 class="text-5xl font-extrabold mb-4 opacity-100" id="hero-title">Discover Unique Businesses</h1>
+      <p class="text-lg opacity-100 mb-8" id="hero-subtitle">Explore the latest in fashion, beauty, and technology.</p>
+      <a href="#categories" class="bg-white text-gray-900 px-6 py-3 rounded-full font-semibold shadow-lg inline-block" id="hero-button">Shop Now</a>
+    </div>
+  </section>
+
+  <!-- Categories Section -->
+  <section class="flex flex-col lg:flex-row items-center justify-around py-20 bg-gray-50" id="categories">
+    <div class="text-center p-6 bg-white shadow-lg rounded-lg m-4">
+      <h2 class="text-2xl font-semibold mb-2">Fashion</h2>
+      <p class="text-gray-600">Trendy, stylish, and exclusive collections.</p>
+    </div>
+    <div class="text-center p-6 bg-white shadow-lg rounded-lg m-4">
+      <h2 class="text-2xl font-semibold mb-2">Beauty</h2>
+      <p class="text-gray-600">Top beauty products from unique brands.</p>
+    </div>
+    <div class="text-center p-6 bg-white shadow-lg rounded-lg m-4">
+      <h2 class="text-2xl font-semibold mb-2">Tech</h2>
+      <p class="text-gray-600">Innovative tech products for modern lifestyles.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-6">
+    <div class="text-center">
+      <p>© 2024 Business Store. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- GSAP and WebGL Script Imports -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
+
+  <!-- Image Transition Script -->
+  <script>
+    const images = document.querySelectorAll('.hero-image');
+    let currentIndex = 0;
+
+    function changeImage() {
+      images[currentIndex].classList.remove('opacity-[100]');
+      images[currentIndex].classList.add('opacity-[0]');
+      
+      currentIndex = (currentIndex + 1) % images.length;
+      
+      images[currentIndex].classList.remove('opacity-[0]');
+      images[currentIndex].classList.add('opacity-[100]');
+      
+      setTimeout(changeImage, 4000); // Change image every 4 seconds
+    }
+
+    setTimeout(changeImage, 4000); // Start the image transition
+  </script>
+
+</body>
+</html>
